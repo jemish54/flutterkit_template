@@ -1,0 +1,20 @@
+title: flutterkit_template
+project_directory: flutterkit_template
+
+dependencies:
+  - hooks_riverpod
+  - go_router
+  - riverpod_annotation
+  - get_it
+  - dio
+  - talker_dio_logger
+  - flutter_hooks
+  - flutter_secure_storage
+  - freezed_annotation
+  - json_annotation
+  - dev:riverpod_generator
+  - dev:build_runner
+  - dev:custom_lint
+  - dev:riverpod_lint
+  - dev:freezed
+  - dev:json_serializable
