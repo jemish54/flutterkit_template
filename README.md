@@ -31,7 +31,7 @@ You can modify any part of the project to suit your requirements. The following 
 
 The basic structure of the template is as follows:
 
-```mermaid
+```
 ├── config
 │
 ├── modules
