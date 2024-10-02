@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:{{title}}/features/auth/providers/auth/auth.provider.dart';
 
+import 'core/providers/auth_status.provider.dart';
 import 'features/auth/presentation/screens/login.screen.dart';
 import 'features/auth/presentation/screens/signup.screen.dart';
 import 'features/error/error.screen.dart';
@@ -15,7 +15,7 @@ part 'router.g.dart';
 GoRouter router(
   RouterRef ref,
 ) {
-  final authState = ref.watch(authProvider);
+  final authState = ref.watch(authStatusProvider);
   return GoRouter(
     debugLogDiagnostics: true,
     initialLocation: ProfileScreen.path,

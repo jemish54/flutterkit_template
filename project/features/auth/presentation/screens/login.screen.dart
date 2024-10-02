@@ -33,9 +33,9 @@ class LoginScreen extends HookConsumerWidget {
     ref.listen(
       authProvider,
       (previous, next) {
-        if (next is AsyncError) {
-          context.showError(next.error.toString());
-        }
+        next.whenOrNull(
+          error: (error) => context.showError(error),
+        );
       },
     );
 
@@ -90,33 +90,33 @@ class LoginScreen extends HookConsumerWidget {
                     );
                   }),
                   Space.y(24),
-                  switch (ref.watch(authProvider)) {
-                    AsyncData() || AsyncError() => ElevatedButton(
-                        onPressed: () async {
-                          if (!formKey.value.currentState!.validate()) return;
-                          await ref.read(authProvider.notifier).login(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: context.colors.primaryContainer,
-                          foregroundColor: context.colors.onPrimaryContainer,
+                  ref.watch(authProvider).maybeWhen(
+                        loading: () => ElevatedButton(
+                          onPressed: () {},
+                          child: const SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: CircularProgressIndicator(),
+                          ),
                         ),
-                        child: Text(
-                          'Log in',
-                          style: context.textStyles.bodyLarge,
+                        orElse: () => ElevatedButton(
+                          onPressed: () async {
+                            if (!formKey.value.currentState!.validate()) return;
+                            await ref.read(authProvider.notifier).login(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: context.colors.primaryContainer,
+                            foregroundColor: context.colors.onPrimaryContainer,
+                          ),
+                          child: Text(
+                            'Log in',
+                            style: context.textStyles.bodyLarge,
+                          ),
                         ),
                       ),
-                    _ => ElevatedButton(
-                        onPressed: () {},
-                        child: const SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: CircularProgressIndicator(),
-                        ),
-                      ),
-                  },
                   Space.y(32),
                   GestureDetector(
                     onTap: () => context.goNamed(SignupScreen.name),

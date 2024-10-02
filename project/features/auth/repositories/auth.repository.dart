@@ -1,51 +1,32 @@
-import 'package:{{title}}/core/common/models/user.model.dart';
-import 'package:{{title}}/core/common/services/api.service.dart';
-import 'package:{{title}}/core/common/services/token.service.dart';
+import 'package:demo_flutter/core/common/models/user.model.dart';
+import 'package:demo_flutter/core/common/services/serverpod.dart';
+import 'package:demo_flutter/core/result/custom_exception.dart';
+import 'package:test/core/common/services/api.service.dart';
 
 class AuthRepository {
   APIService api;
 
   AuthRepository(this.api);
 
-  Future<User> register(
+  Future<User?> getCurrentUser() async {}
+
+  Future<bool> register(
     String name,
     String email,
     String password,
-  ) async {
-    final response = await api.dio.post(
-      '/register',
-      data: {
-        'name': name,
-        'email': email,
-        'password': password,
-      },
-    );
-    return User.fromJson(response.data);
-  }
+  ) async {}
+
+  Future<User> verify(
+    String email,
+    String code,
+  ) async {}
 
   Future<User> login(
     String email,
     String password,
-  ) async {
-    final response = await api.dio.post(
-      '/login',
-      data: {
-        'email': email,
-        'password': password,
-      },
-    );
-    return User.fromJson(response.data);
-  }
+  ) async {}
 
-  Future<({String access, String refresh})> refresh() async {
-    final response = await api.dio.get('/refresh');
-    return (
-      access: response.data['access_token'] as String,
-      refresh: response.data['refresh_token'] as String,
-    );
-  }
+  Future<void> logout() async {}
 
-  Future<void> logout() async {
-    await TokenService.clear();
-  }
+  Future<({String access, String refresh})> refresh() async {}
 }
