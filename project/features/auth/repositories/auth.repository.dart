@@ -1,6 +1,5 @@
-import 'package:demo_flutter/core/common/models/user.model.dart';
-import 'package:demo_flutter/core/common/services/serverpod.dart';
-import 'package:demo_flutter/core/result/custom_exception.dart';
+import 'package:{{title}}/core/common/models/user.model.dart';
+import 'package:{{title}}/core/result/custom_exception.dart';
 import 'package:test/core/common/services/api.service.dart';
 
 class AuthRepository {

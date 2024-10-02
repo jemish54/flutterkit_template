@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:{{title}}/core/utils/helpers/space.helper.dart';
 import 'package:{{title}}/features/auth/providers/auth/auth.provider.dart';
+import 'package:{{title}}/core/providers/auth_status.provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -24,7 +25,7 @@ class ProfileScreen extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(ref.watch(authProvider).requireValue.toString()),
+            Text(ref.watch(authStatusProvider).requireValue.toString()),
             Space.y(16),
             ElevatedButton(
               onPressed: () async {
