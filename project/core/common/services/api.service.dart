@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
-import 'package:{{title}}/dependencies.dart';
-import 'package:{{title}}/features/auth/repositories/auth.repository.dart';
 
+import '../../../dependencies.dart';
+import '../../../features/auth/repositories/auth.repository.dart';
 import '../../config/api.config.dart';
 import 'token.service.dart';
 

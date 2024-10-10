@@ -1,7 +1,7 @@
-import 'package:{{title}}/dependencies.dart';
-import 'package:{{title}}/features/auth/repositories/auth.repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../dependencies.dart';
+import '../../features/auth/repositories/auth.repository.dart';
 import '../common/models/user.model.dart';
 
 part 'auth_status.provider.g.dart';

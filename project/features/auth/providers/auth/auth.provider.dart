@@ -1,9 +1,10 @@
-import 'package:{{title}}/core/providers/auth_status.provider.dart';
-import 'package:{{title}}/core/result/custom_exception.dart';
-import 'package:{{title}}/features/auth/providers/auth/auth.state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:{{title}}/dependencies.dart';
-import 'package:{{title}}/features/auth/repositories/auth.repository.dart';
+
+import '../../../../core/providers/auth_status.provider.dart';
+import '../../../../core/result/custom_exception.dart';
+import '../../../../dependencies.dart';
+import '../../repositories/auth.repository.dart';
+import 'auth.state.dart';
 
 part 'auth.provider.g.dart';
 

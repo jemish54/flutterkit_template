@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:{{title}}/core/utils/extensions/context.extension.dart';
-import 'package:{{title}}/core/utils/helpers/snackbar.helper.dart';
-import 'package:{{title}}/core/utils/helpers/space.helper.dart';
-import 'package:{{title}}/core/utils/validators.dart';
-import 'package:{{title}}/features/auth/providers/auth/auth.provider.dart';
 
+import '../../../../core/utils/extensions/context.extension.dart';
+import '../../../../core/utils/helpers/snackbar.helper.dart';
+import '../../../../core/utils/helpers/space.helper.dart';
+import '../../../../core/utils/validators.dart';
+import '../../providers/auth/auth.provider.dart';
 import 'login.screen.dart';
 
 class SignupScreen extends HookConsumerWidget {

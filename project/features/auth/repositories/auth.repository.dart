@@ -1,31 +1,40 @@
-import 'package:{{title}}/core/common/models/user.model.dart';
-import 'package:{{title}}/core/result/custom_exception.dart';
-import 'package:test/core/common/services/api.service.dart';
+import '../../../core/common/models/user.model.dart';
+import 'auth.protocol.dart';
 
-class AuthRepository {
-  APIService api;
+class AuthRepository implements AuthProtocol {
+  @override
+  Future<User?> getCurrentUser() {
+    // TODO: implement getCurrentUser
+    throw UnimplementedError();
+  }
 
-  AuthRepository(this.api);
+  @override
+  Future<User> login(String email, String password) {
+    // TODO: implement login
+    throw UnimplementedError();
+  }
 
-  Future<User?> getCurrentUser() async {}
+  @override
+  Future<void> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
+  }
 
-  Future<bool> register(
-    String name,
-    String email,
-    String password,
-  ) async {}
+  @override
+  Future<({String access, String refresh})> refresh() {
+    // TODO: implement refresh
+    throw UnimplementedError();
+  }
 
-  Future<User> verify(
-    String email,
-    String code,
-  ) async {}
+  @override
+  Future<bool> register(String name, String email, String password) {
+    // TODO: implement register
+    throw UnimplementedError();
+  }
 
-  Future<User> login(
-    String email,
-    String password,
-  ) async {}
-
-  Future<void> logout() async {}
-
-  Future<({String access, String refresh})> refresh() async {}
+  @override
+  Future<User> verify(String email, String code) {
+    // TODO: implement verify
+    throw UnimplementedError();
+  }
 }

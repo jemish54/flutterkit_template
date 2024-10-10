@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:{{title}}/core/utils/helpers/space.helper.dart';
-import 'package:{{title}}/features/auth/providers/auth/auth.provider.dart';
-import 'package:{{title}}/core/providers/auth_status.provider.dart';
+
+import '../../../../core/providers/auth_status.provider.dart';
+import '../../../../core/utils/helpers/space.helper.dart';
+import '../../../auth/providers/auth/auth.provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
