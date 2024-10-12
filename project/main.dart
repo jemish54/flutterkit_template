@@ -8,7 +8,7 @@ import 'app.dart';
 import 'core/utils/platform_type.dart';
 import 'gen/assets.gen.dart';
 
-Future<void> start() async {
+Future<void> main() async {
   await dotenv.load(fileName: Assets.config.assets.env.aEnvStaging);
 
   WidgetsFlutterBinding.ensureInitialized();
