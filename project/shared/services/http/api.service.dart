@@ -6,7 +6,7 @@ import 'package:talker_dio_logger/talker_dio_logger.dart';
 
 import '../../../dependencies.dart';
 import '../../../features/auth/repositories/auth.repository.dart';
-import '../../config/api.config.dart';
+import '../../../core/config/api.config.dart';
 import 'token.service.dart';
 
 class APIService {

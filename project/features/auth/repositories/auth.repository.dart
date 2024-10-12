@@ -1,4 +1,4 @@
-import '../../../core/common/models/user.model.dart';
+import '../../../shared/models/user.model.dart';
 import 'auth.protocol.dart';
 
 class AuthRepository implements AuthProtocol {

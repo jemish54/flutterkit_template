@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'core/providers/auth_status.provider.dart';
+import 'shared/providers/auth_status.provider.dart';
 import 'features/auth/presentation/screens/login.screen.dart';
 import 'features/auth/presentation/screens/signup.screen.dart';
 import 'features/error/error.screen.dart';
@@ -23,8 +23,10 @@ GoRouter router(
       if (authState.isLoading) return SplashScreen.path;
 
       bool isAuthenticated = authState.requireValue != null;
-      bool isAuthenticating =
-          [LoginScreen.path, SignupScreen.path].contains(state.matchedLocation);
+      bool isAuthenticating = [
+        LoginScreen.path,
+        SignupScreen.path,
+      ].contains(state.matchedLocation);
 
       return isAuthenticated
           ? isAuthenticating

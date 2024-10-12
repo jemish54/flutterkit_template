@@ -14,6 +14,7 @@ class AppTheme {
         colorSchemeSeed: color,
         useMaterial3: true,
         brightness: brightness,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         inputDecorationTheme: _inputDecorationTheme,
         elevatedButtonTheme: _elevatedButtonTheme,
       );

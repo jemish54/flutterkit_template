@@ -66,7 +66,7 @@ class LoginScreen extends HookConsumerWidget {
                       labelText: 'Email',
                       prefixIcon: Icon(Icons.email),
                     ),
-                    validator: Validators.email.call,
+                    validator: Validators.email,
                   ),
                   Space.y(16),
                   HookBuilder(builder: (context) {
@@ -86,7 +86,7 @@ class LoginScreen extends HookConsumerWidget {
                           ),
                         ),
                       ),
-                      validator: Validators.password.call,
+                      validator: Validators.password,
                     );
                   }),
                   Space.y(24),

@@ -2,6 +2,7 @@ title: flutterkit_template
 project_directory: flutterkit_template
 
 dependencies:
+  - flutter_dotenv
   - hooks_riverpod
   - go_router
   - riverpod_annotation
@@ -18,3 +19,5 @@ dependencies:
   - dev:riverpod_lint
   - dev:freezed
   - dev:json_serializable
+  - dev:flutter_gen_runner
+  - dev:import_sorter

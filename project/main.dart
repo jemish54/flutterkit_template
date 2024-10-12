@@ -1,28 +1,30 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'app.dart';
+import 'core/utils/platform_type.dart';
+import 'gen/assets.gen.dart';
 
-import 'dependencies.dart';
-import 'router.dart';
-import 'theme/theme.dart';
+Future<void> start() async {
+  await dotenv.load(fileName: Assets.config.assets.env.aEnvStaging);
 
-void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initDeps();
-  runApp(const ProviderScope(child: MyApp()));
-}
 
-class MyApp extends HookConsumerWidget {
-  const MyApp({super.key});
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(routerProvider);
-    final theme = ref.watch(themeProvider);
-    return MaterialApp.router(
-      themeMode: ThemeMode.dark,
-      theme: theme.make(Colors.blue),
-      darkTheme: theme.make(Colors.blue, Brightness.dark),
-      routerConfig: router,
-    );
-  }
+  final platformType = detectPlatformType();
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        platformTypeProvider.overrideWithValue(platformType),
+      ],
+      child: const App(),
+    ),
+  );
 }

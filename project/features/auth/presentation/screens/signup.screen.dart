@@ -77,7 +77,14 @@ class SignupScreen extends HookConsumerWidget {
                                 labelText: 'Verification Code',
                                 prefixIcon: Icon(Icons.verified),
                               ),
-                              validator: (Validator()..required()).call,
+                              validator: Validator(
+                                fieldName: 'Verification Code',
+                                validations: [
+                                  Validations.required(
+                                    error: 'Verification Code is required',
+                                  ),
+                                ],
+                              ).build,
                             ),
                           ],
                         )
@@ -89,7 +96,14 @@ class SignupScreen extends HookConsumerWidget {
                                 labelText: 'Name',
                                 prefixIcon: Icon(Icons.person),
                               ),
-                              validator: (Validator()..required()).call,
+                              validator: Validator(
+                                fieldName: 'Name',
+                                validations: [
+                                  Validations.required(
+                                    error: 'Name is required',
+                                  ),
+                                ],
+                              ).build,
                             ),
                             Space.y(16),
                             TextFormField(
@@ -98,7 +112,7 @@ class SignupScreen extends HookConsumerWidget {
                                 labelText: 'Email',
                                 prefixIcon: Icon(Icons.email),
                               ),
-                              validator: Validators.email.call,
+                              validator: Validators.email,
                             ),
                             Space.y(16),
                             HookBuilder(builder: (context) {
@@ -119,7 +133,7 @@ class SignupScreen extends HookConsumerWidget {
                                     ),
                                   ),
                                 ),
-                                validator: Validators.password.call,
+                                validator: Validators.password,
                               );
                             }),
                           ],
