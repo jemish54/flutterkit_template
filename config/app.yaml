@@ -1,11 +1,27 @@
 package_rename_config:
   android:
-    app_name: { { title_titleCase } } # (String) The display name of the android app
-    package_name: com.jemish54.{{title}} # (String) The package name of the android app
+    app_name: Example # (String) The display name of the android app
+    package_name: com.jemish54.template_test # (String) The package name of the android app
 
   ios:
-    app_name: { { title_titleCase } } # (String) The display name of the ios app
-    package_name: com.jemish54.{{title}} # (String) The product bundle identifier of the ios app
+    app_name: Example # (String) The display name of the ios app
+    package_name: com.jemish54.template_test # (String) The product bundle identifier of the ios app
+
+  linux:
+    app_name: Example # (String) The display name of the linux app
+    package_name: com.jemish54.template_test # (String) The package name of the linux app
+
+  macos:
+    app_name: Example # (String) The display name of the macos app
+    package_name: com.jemish54.template_test # (String) The package name of the macos app
+
+  web:
+    app_name: Example # (String) The display name of the web app
+    package_name: com.jemish54.template_test # (String) The package name of the web app
+
+  windows:
+    app_name: Example # (String) The display name of the windows app
+    package_name: com.jemish54.template_test # (String) The package name of the windows app
 
 flutter_launcher_icons:
   image_path: "assets/launcher.png"
@@ -15,31 +31,3 @@ flutter_launcher_icons:
 flutter_native_splash:
   color: "#000B25"
   image: "assets/launcher.png"
-
-flutter_gen:
-  output: lib/gen/ # Optional (default: lib/gen/)
-
-  #  integrations:
-  #    flutter_svg: true
-  #    flare_flutter: true
-
-  assets:
-    enabled: true
-  fonts:
-    enabled: true
-
-import_sorter:
-  comments: false # Optional, defaults to true
-  ignored_files: # Optional, defaults to []
-    - \/lib\/*
-
-flutter:
-  uses-material-design: true
-  generate: true
-  assets:
-    - assets/env/
-    - assets/lang/
-    - assets/images/
-    - assets/icons/
-    - assets/
-    #- assets/image/

@@ -15,62 +15,43 @@ help: ## This help dialog.
 	done
 
 run_unit: ## Runs unit tests
-	@echo "╠ Running the tests"
+	@echo "Running the tests"
 	@flutter test || (echo "Error while running tests"; exit 1)
 
 clean: ## Cleans the environment
-	@echo "╠ Cleaning the project..."
+	@echo "Cleaning the project..."
 	@rm -rf pubspec.lock
 	@flutter clean
 	@flutter pub get
 
 watch: ## Watches the files for changes
-	@echo "╠ Watching the project..."
-	@flutter pub run build_runner watch --delete-conflicting-outputs
+	@echo "Watching the project..."
+	@dart run build_runner watch --delete-conflicting-outputs
 
 build: ## Build the files for changes
-	@echo "╠ Building the project..."
-	@flutter pub run build_runner build --delete-conflicting-outputs
-
-
-gen: ## Generates the assets
-	@echo "╠ Generating the assets..."
-	@flutter pub get
-	@flutter packages pub run build_runner build
+	@echo "Building the project..."
+	@dart run build_runner build --delete-conflicting-outputs
 
 format: ## Formats the code
-	@echo "╠ Formatting the code"
+	@echo "Formatting the code"
 	@dart format lib .
-	@flutter pub run import_sorter:main
+	@dart run import_sorter:main
 	@flutter format lib
 
-lint: ## Lints the code
-	@echo "╠ Verifying code..."
-	@dart analyze . || (echo "Error in project"; exit 1)
-
-upgrade: clean ## Upgrades dependencies
-	@echo "╠ Upgrading dependencies..."
-	@flutter pub upgrade
-
-commit: format lint run_unit
-	@echo "╠ Committing..."
-	git add .
-	git commit
-
 run_dev_web: ## Runs the web application in dev
-	@echo "╠ Running the app"
+	@echo "Running the app"
 	@flutter run -d chrome --dart-define=ENVIRONMENT=dev
 
 run_dev_mobile: ## Runs the mobile application in dev
-	@echo "╠ Running the app"
+	@echo "Running the app"
 	@flutter run --flavor development -t lib/main_development.dart
 
 run_stg_mobile: ## Runs the mobile application in dev
-	@echo "╠ Running the app"
+	@echo "Running the app"
 	@flutter run --flavor staging -t lib/main_staging.dart
 
 run_prd_mobile: ## Runs the mobile application in dev
-	@echo "╠ Running the app"
+	@echo "Running the app"
 	@flutter run --flavor production -t lib/main_production.dart
 
 build_apk_dev: ## Runs the mobile application in dev
@@ -93,4 +74,12 @@ purge: ## Purges the Flutter
 	@flutter clean
 	@flutter pub get
 
-	
+setup: ## Setup Launcher and Native Splash
+	@echo "Setting up the project..."
+	@flutter pub get
+	@dart run flutter_launcher_icons -f app.yaml
+	@dart run flutter_native_splash:create --path=app.yaml
+
+rename: ## Rename app name
+	@echo "Renaming the project..."
+	@dart run package_rename -p app.yaml
