@@ -44,14 +44,12 @@ abstract class Validations {
           }
           if (min != null) {
             if (value.trim().length < min) {
-              return minError ??
-                  'Minimum length of $fieldName should be ${min}';
+              return minError ?? 'Minimum length of $fieldName should be $min';
             }
           }
           if (max != null) {
             if (value.trim().length > max) {
-              return maxError ??
-                  'Maximum length of $fieldName should be ${max}';
+              return maxError ?? 'Maximum length of $fieldName should be $max';
             }
           }
           return null;
