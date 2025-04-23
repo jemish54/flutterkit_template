@@ -8,6 +8,7 @@ import '../../../../core/utils/helpers/snackbar.helper.dart';
 import '../../../../core/utils/helpers/space.helper.dart';
 import '../../../../core/utils/validators.dart';
 import '../../providers/auth/auth.provider.dart';
+import '../../providers/auth/auth.state.dart';
 import 'signup.screen.dart';
 
 class LoginScreen extends HookConsumerWidget {

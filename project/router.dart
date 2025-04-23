@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'shared/providers/auth_status.provider.dart';
@@ -13,7 +14,7 @@ part 'router.g.dart';
 
 @riverpod
 GoRouter router(
-  RouterRef ref,
+  Ref ref,
 ) {
   final authState = ref.watch(authStatusProvider);
   return GoRouter(
