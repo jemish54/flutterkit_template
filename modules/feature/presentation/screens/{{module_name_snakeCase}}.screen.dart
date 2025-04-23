@@ -11,6 +11,7 @@ class {{module_name_pascalCase}}Screen extends ConsumerWidget {
   static route({List<RouteBase> routes = const []}) => GoRoute(
         path: path,
         name: name,
+        routes: routes,
         pageBuilder: (context, state) => const MaterialPage(
           child: {{module_name_pascalCase}}Screen(),
         ),

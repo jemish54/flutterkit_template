@@ -1,12 +1,12 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:{{title_snakeCase}}/dependencies.dart';
-import 'package:{{title_snakeCase}}/features/{{module_name_snakeCase}}/repositories/{{module_name_snakeCase}}.repository.dart';
+import 'package:{{title_snakeCase}}/features/{{module_name_snakeCase}}/repositories/{{module_name_snakeCase}}.protocol.dart';
 
 part '../{{title_snakeCase}}/{{module_name_snakeCase}}.provider.g.dart';
 
 @riverpod
 class {{module_name_pascalCase}} extends _${{module_name_pascalCase}} {
-  final service = getIt.get<{{module_name_pascalCase}}Repository>();
+  final service = getIt.get<{{module_name_pascalCase}}Protocol>();
 
   @override
   FutureOr<void> build() {

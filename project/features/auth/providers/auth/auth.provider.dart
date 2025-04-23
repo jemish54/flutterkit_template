@@ -3,14 +3,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../shared/providers/auth_status.provider.dart';
 import '../../../../shared/services/http/result/custom_exception.dart';
 import '../../../../dependencies.dart';
-import '../../repositories/auth.repository.dart';
+import '../../repositories/auth.protocol.dart';
 import 'auth.state.dart';
 
 part 'auth.provider.g.dart';
 
 @riverpod
 class Auth extends _$Auth {
-  final repository = getIt.get<AuthRepository>();
+  final repository = getIt.get<AuthProtocol>();
 
   @override
   AuthState build() {

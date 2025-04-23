@@ -18,6 +18,7 @@ class SignupScreen extends HookConsumerWidget {
   static route({List<RouteBase> routes = const []}) => GoRoute(
         path: path,
         name: name,
+        routes: routes,
         pageBuilder: (context, state) => const MaterialPage(
           child: SignupScreen(),
         ),
@@ -37,9 +38,13 @@ class SignupScreen extends HookConsumerWidget {
     ref.listen(
       authProvider,
       (previous, next) {
-        next.whenOrNull(
-          error: (error) => context.showError(error),
-        );
+        switch (next) {
+          case AuthStateError(error: String error):
+            context.showError(error);
+            break;
+          default:
+            break;
+        }
       },
     );
 
@@ -139,8 +144,21 @@ class SignupScreen extends HookConsumerWidget {
                           ],
                         ),
                   Space.y(24),
-                  ref.watch(authProvider).maybeWhen(
-                        orElse: () => ElevatedButton(
+                  () {
+                    return switch (ref.watch(authProvider)) {
+                      AuthStateLoading() => ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: context.colors.primaryContainer,
+                            foregroundColor: context.colors.onPrimaryContainer,
+                          ),
+                          child: const SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      _ => ElevatedButton(
                           onPressed: () async {
                             if (!formKey.value.currentState!.validate()) return;
                             if (isVerifying.value) {
@@ -166,19 +184,8 @@ class SignupScreen extends HookConsumerWidget {
                             style: context.textStyles.bodyLarge,
                           ),
                         ),
-                        loading: () => ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: context.colors.primaryContainer,
-                            foregroundColor: context.colors.onPrimaryContainer,
-                          ),
-                          child: const SizedBox(
-                            height: 24,
-                            width: 24,
-                            child: CircularProgressIndicator(),
-                          ),
-                        ),
-                      ),
+                    };
+                  }(),
                   Space.y(32),
                   GestureDetector(
                     onTap: () => context.goNamed(LoginScreen.name),

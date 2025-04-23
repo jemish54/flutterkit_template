@@ -7,9 +7,9 @@ final getIt = GetIt.instance;
 Future<void> initDeps() async {
   // Register Singleton Services Here
 
-  initAuth();
+  _initAuth();
 }
 
-initAuth() {
+_initAuth() {
   getIt.registerFactory(() => AuthRepository());
 }

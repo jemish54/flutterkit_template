@@ -18,6 +18,7 @@ class LoginScreen extends HookConsumerWidget {
   static route({List<RouteBase> routes = const []}) => GoRoute(
         path: path,
         name: name,
+        routes: routes,
         pageBuilder: (context, state) => const MaterialPage(
           child: LoginScreen(),
         ),
@@ -33,9 +34,13 @@ class LoginScreen extends HookConsumerWidget {
     ref.listen(
       authProvider,
       (previous, next) {
-        next.whenOrNull(
-          error: (error) => context.showError(error),
-        );
+        switch (next) {
+          case AuthStateError(error: String error):
+            context.showError(error);
+            break;
+          default:
+            break;
+        }
       },
     );
 
@@ -90,8 +95,9 @@ class LoginScreen extends HookConsumerWidget {
                     );
                   }),
                   Space.y(24),
-                  ref.watch(authProvider).maybeWhen(
-                        loading: () => ElevatedButton(
+                  () {
+                    return switch (ref.watch(authProvider)) {
+                      AuthStateLoading() => ElevatedButton(
                           onPressed: () {},
                           child: const SizedBox(
                             height: 24,
@@ -99,7 +105,7 @@ class LoginScreen extends HookConsumerWidget {
                             child: CircularProgressIndicator(),
                           ),
                         ),
-                        orElse: () => ElevatedButton(
+                      _ => ElevatedButton(
                           onPressed: () async {
                             if (!formKey.value.currentState!.validate()) return;
                             await ref.read(authProvider.notifier).login(
@@ -116,7 +122,8 @@ class LoginScreen extends HookConsumerWidget {
                             style: context.textStyles.bodyLarge,
                           ),
                         ),
-                      ),
+                    };
+                  }(),
                   Space.y(32),
                   GestureDetector(
                     onTap: () => context.goNamed(SignupScreen.name),

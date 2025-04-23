@@ -6,12 +6,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'app.dart';
 import 'core/utils/platform_type.dart';
+import 'dependencies.dart';
 import 'gen/assets.gen.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: Assets.config.assets.env.aEnvStaging);
+  // await dotenv.load(fileName: Assets.config.assets.env.aEnvStaging);
 
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initDeps();
 
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
